@@ -657,12 +657,10 @@
             box-shadow: 0 5px 15px rgba(88, 101, 242, 0.5);
         }
         
-        /* Particles */
         canvas {
             display: block;
         }
         
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -984,7 +982,6 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
@@ -994,7 +991,6 @@
             }
         });
         
-        // FAQ functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentNode;
@@ -1009,7 +1005,6 @@
             });
         });
         
-        // Particles.js initialization
         particlesJS("particles-js", {
             "particles": {
                 "number": {
@@ -1116,7 +1111,6 @@
             "retina_detect": true
         });
         
-        // Initialize animations on scroll
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
