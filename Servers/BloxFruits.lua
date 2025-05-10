@@ -61,6 +61,7 @@ local targetedCircleColor = Color3.fromRGB(0, 255, 0)
 local aimViewerEnabled = false
 local ignoreSelf = true
 
+-- Function to fetch keys from a URL
 local function fetchKeys(url)
     local success, response = pcall(function()
         return game:HttpGet(url)
@@ -76,10 +77,12 @@ local function fetchKeys(url)
     return keys
 end
 
+-- Fetch keys from both sources
 local validKeys = {}
-local githubKeys = fetchKeys("https://raw.githubusercontent.com/THEBWARE/-/refs/heads/main/johncenaop.txt")
+local githubKeys = fetchKeys("https://sapphireweb.vercel.app/Servers/Keys.txt")
 local pastebinKeys = fetchKeys("https://pastebin.com/raw/UEuXVrir")
 
+-- Combine keys from both sources
 for _, key in ipairs(githubKeys) do
     table.insert(validKeys, key)
 end
@@ -87,8 +90,9 @@ for _, key in ipairs(pastebinKeys) do
     table.insert(validKeys, key)
 end
 
+-- Copy key link to clipboard automatically if getgenv().autocopykey is true
 if getgenv().autocopykey == true then
-    setclipboard("https://discord.gg/hkQeuC9BAT")
+    setclipboard("https://thebware.github.io/-/key.html")
     Rayfield:Notify({
         Title = "Key Link Copied",
         Content = "The key link has been copied to your clipboard if you set getgenv().autocopykey to true",
@@ -97,76 +101,42 @@ if getgenv().autocopykey == true then
     })
 end
 
--- Key system verification
-local keyVerified = false
-local keyInput = ""
-
-local KeyWindow = Rayfield:CreateWindow({
-    Name = "Key System",
-    LoadingTitle = "Authentication",
-    LoadingSubtitle = "By TheBware",
+-- Create Window with Key System
+local Window = Rayfield:CreateWindow({
+    Name = "Cevor MM2 V8",
+    Icon = 0,
+    LoadingTitle = "Cevor MM2 V8",
+    LoadingSubtitle = "by ScripterBob",
+    Theme = "Default",
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = false,
     ConfigurationSaving = {
-        Enabled = false,
+        Enabled = true,
+        FolderName = "CevorMM2Config",
+        FileName = "CevorMM2Config"
     },
     Discord = {
-        Enabled = false,
+        Enabled = true,
+        Invite = "https://discord.gg/PpYn4v5vR2",
+        RememberJoins = true
     },
     KeySystem = true,
     KeySettings = {
-        Title = "Key System",
-        Subtitle = "Key Required",
-        Note = "Join the discord (discord.gg/thebware)",
-        FileName = "TheBwareKey",
+        Title = "Cevor MM2 V8",
+        Subtitle = "Key System",
+        Note = "Key Link Has Been Copied To Clipboard",
+        FileName = "CevorMM2Key",
         SaveKey = false,
-        GrabKeyFromSite = false,
-        Key = validKeys
+        GrabKeyFromSite = false, -- Disable grabbing key from site (we handle it manually)
+        Key = validKeys -- Use the combined keys
     }
 })
 
-KeyWindow:Prompt({
-    Title = "Key System",
-    SubTitle = "Enter your key to continue",
-    Content = "You need to enter a valid key to use this script.",
-    Actions = {
-        Accept = {
-            Name = "Accept",
-            Callback = function(input)
-                keyInput = input
-                for _, validKey in pairs(validKeys) do
-                    if input == validKey then
-                        keyVerified = true
-                        Rayfield:Notify({
-                            Title = "Success",
-                            Content = "Key verified successfully!",
-                            Duration = 3,
-                            Image = nil,
-                        })
-                        -- Load the main script after successful verification
-                        loadstring(game:HttpGet("http://sapphireweb.vercel.app/Servers/RunnerLoaderXDBrubbyBrubbbyLOLSpoongeBOBWHOKNOWsseo.aeao.TXT.txt"))()
-                        return
-                    end
-                end
-                Rayfield:Notify({
-                    Title = "Error",
-                    Content = "Invalid key!",
-                    Duration = 3,
-                    Image = nil,
-                })
-            end
-        },
-        Decline = {
-            Name = "Decline",
-            Callback = function()
-                Rayfield:Notify({
-                    Title = "Cancelled",
-                    Content = "Key verification cancelled.",
-                    Duration = 3,
-                    Image = nil,
-                })
-            end
-        }
-    }
-})
+local MainTab = Window:CreateTab("Load Interface", Nil)
 
--- If they close the window without entering a key
-KeyWindow:Destroy()
+local Button = MainTab:CreateButton({
+   Name = "Button Example",
+   Callback = function()
+loadstring(game:HttpGet("https://sapphireweb.vercel.app/Servers/RunnerLoaderXDBrubbyBrubbbyLOLSpoongeBOBWHOKNOWsseo.aeao.TXT.txt"))()
+   end,
+})
