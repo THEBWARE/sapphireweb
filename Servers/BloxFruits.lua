@@ -135,8 +135,8 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("Load Interface", Nil)
 
 local Button = MainTab:CreateButton({
-   Name = "Button Example",
+   Name = "Load Interface",
    Callback = function()
-loadstring(game:HttpGet("https://sapphireweb.vercel.app/Servers/RunnerLoaderXDBrubbyBrubbbyLOLSpoongeBOBWHOKNOWsseo.aeao.TXT.txt"))()
+    loadstring(game:HttpGet("https://sapphireweb.vercel.app/Servers/RunnerLoaderXDBrubbyBrubbbyLOLSpoongeBOBWHOKNOWsseo.aeao.TXT.txt"))()
    end,
 })
