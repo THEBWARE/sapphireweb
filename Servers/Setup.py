@@ -16,7 +16,7 @@ def display_ascii_art():
             |_|   |_|                     
     """
     print(f"{blue_color}{ascii_art}{reset_color}")
-    print("Much Better GUI And added script hub!")
+    print("Best Executor In Existence!")
 
 def download_file(url, filename):
     print(f"Step 1: Downloading {filename}")
