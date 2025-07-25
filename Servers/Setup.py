@@ -37,7 +37,7 @@ def main():
     display_ascii_art()
     url = "https://github.com/THEBWARE/sapphireweb/releases/download/Setup/SapphireV5.zip"
     zip_filename = "SapphireV5.zip"
-    extract_to = "SapphireV5.zip"
+    extract_to = "SapphireV5"
 
     if not os.path.exists(extract_to):
         os.makedirs(extract_to)
