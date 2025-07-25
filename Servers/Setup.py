@@ -35,9 +35,9 @@ def unzip_file(filename, extract_to):
 
 def main():
     display_ascii_art()
-    url = "https://github.com/THEBWARE/sapphireweb/releases/download/Setup/Sapphire-V2.0.2.zip"
-    zip_filename = "Sapphire-V2.0.2.zip"
-    extract_to = "Sapphire-V2.0.2"
+    url = "https://github.com/THEBWARE/sapphireweb/releases/download/Setup/SapphireV5.zip"
+    zip_filename = "SapphireV5.zip"
+    extract_to = "SapphireV5.zip"
 
     if not os.path.exists(extract_to):
         os.makedirs(extract_to)
